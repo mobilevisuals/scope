@@ -11,25 +11,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ScopeController {
 
-    private Customer customer;
+    DataRequestScope dataRequestScope;
+    DataSessionScope dataSessionScope;
 
-    public Customer getCustomer() {
-        return customer;
+    public DataRequestScope getDataRequestScope() {
+        return dataRequestScope;
     }
     @Autowired
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setDataRequestScope(DataRequestScope dataRequestScope) {
+        this.dataRequestScope = dataRequestScope;
+    }
+
+    public DataSessionScope getDataSessionScope() {
+        return dataSessionScope;
+    }
+    @Autowired
+    public void setDataSessionScope(DataSessionScope dataSessionScope) {
+        this.dataSessionScope = dataSessionScope;
     }
 
     @RequestMapping("/request")
     public String requestCall() {
-        return " "+customer.getDataRequestScope().getCounter();
+        return " "+dataRequestScope.getCounter();
     }
 
 
     @RequestMapping("/session")
     public String sessionCall() {
-        return " "+customer.getDataSessionScope().getCounter();
+        return " "+dataSessionScope.getCounter();
     }
 
 
